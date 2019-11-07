@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 3.8.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png"><link rel="mask-icon" href="/images/logo.svg" color="#222"><link rel="alternate" href="/atom.xml" title="Deepspace" type="application/atom+xml"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css"><script id="hexo-configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Pisces",version:"7.5.0",exturl:!1,sidebar:{position:"left",display:"post",offset:12,onmobile:!1},copycode:{enable:!1,show_result:!1,style:null},back2top:{enable:!0,sidebar:!1,scrollpercent:!1},bookmark:{enable:!1,color:"#222",save:"auto"},fancybox:!1,mediumzoom:!1,lazyload:!1,pangu:!1,algolia:{appID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},localsearch:{enable:!1,trigger:"auto",top_n_per_article:1,unescape:!1,preload:!1},path:"search.xml",motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},translation:{copy_button:"复制",copy_success:"复制成功",copy_failure:"复制失败"},sidebarPadding:40}</script><meta name="description" content="一、什么是面向对象编程？维基百科上是这样说的  Object-oriented programming (OOP) is a programming paradigm based on the concept of “objects”, which may contain data, in the form of fields, often known as attributes; and co"><meta name="keywords" content="JavaScript"><meta property="og:type" content="article"><meta property="og:title" content="JS 面向对象(一)"><meta property="og:url" content="https://togoblog.cn/js-oo-1/index.html"><meta property="og:site_name" content="Deepspace"><meta property="og:description" content="一、什么是面向对象编程？维基百科上是这样说的  Object-oriented programming (OOP) is a programming paradigm based on the concept of “objects”, which may contain data, in the form of fields, often known as attributes; and co"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2019-11-07T09:31:58.258Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="JS 面向对象(一)"><meta name="twitter:description" content="一、什么是面向对象编程？维基百科上是这样说的  Object-oriented programming (OOP) is a programming paradigm based on the concept of “objects”, which may contain data, in the form of fields, often known as attributes; and co"><link rel="canonical" href="https://togoblog.cn/js-oo-1/"><script id="page-configurations">CONFIG.page={sidebar:"",isHome:!1,isPost:!0,isPage:!1,isArchive:!1}</script><title>JS 面向对象(一) | Deepspace</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-header,.use-motion .comments,.use-motion .menu-item,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body itemscope itemtype="http://schema.org/WebPage"><div class="container use-motion"><div class="headband"></div><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-container"><div class="site-meta"><div><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Deepspace</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">我叫陈星星</p></div><div class="site-nav-toggle"><div class="toggle" aria-label="切换导航栏"><span class="toggle-line toggle-line-first"></span><span class="toggle-line toggle-line-middle"></span><span class="toggle-line toggle-line-last"></span></div></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-fw fa-home"></i> 首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i> 标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i> 归档</a></li></ul></nav></div></header><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span>0%</span></div><main class="main"><div class="main-inner"><div class="content-wrap"><div class="content"><div class="posts-expand"><article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://togoblog.cn/js-oo-1/"><span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.gif"><meta itemprop="name" content="Deepspace"><meta itemprop="description" content="凡事预 ？立 ：废"></span><span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Deepspace"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"> JS 面向对象(一)</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2016-10-28 00:00:00" itemprop="dateCreated datePublished" datetime="2016-10-28T00:00:00+08:00">2016-10-28</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">更新于</span> <time title="修改时间：2019-11-07 17:31:58" itemprop="dateModified" datetime="2019-11-07T17:31:58+08:00">2019-11-07</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"> <h3 id="一、什么是面向对象编程？"><a href="#一、什么是面向对象编程？" class="headerlink" title="一、什么是面向对象编程？"></a>一、什么是面向对象编程？</h3><p>维基百科上是这样说的</p><blockquote><p>Object-oriented programming (OOP) is a programming paradigm based on the concept of “objects”, which may contain data, in the form of fields, often known as attributes; and code, in the form of procedures, often known as methods.</p></blockquote><p>翻译一下：面向对象编程是一套基于“对象”这个概念的编程方法论。一个对象中会包含数据，通常叫“属性”，也会包含一些函数，通常叫方法。</p><h4 id="1-class-和-object"><a href="#1-class-和-object" class="headerlink" title="1.class 和 object"></a>1.class 和 object</h4><p>object 就是对象的英文，class 中文翻译为”类”，这两个概念是面向对象编程的最重要的概念。对象是类的实例化，例如人是一个类，人有名字这个属性，但是没有具体值。 把人这个类实例化成一个具体的人，给这个人具体赋值，这个具体的人，就是一个对象，对象中就有了实际的数据值了。</p><a id="more"></a><h4 id="2-为何要面向对象编程？"><a href="#2-为何要面向对象编程？" class="headerlink" title="2.为何要面向对象编程？"></a>2.为何要面向对象编程？</h4><p>面向过程其实最为实际的一种思考方式，因为我们总是一贯一步一步的解决问题。可以说面向过程是一种基础的方法，它考虑的是实际的实现。 所以面向过程编程其实是更对新手直观的，但是面向对象编程因为对数据和方法进行了封装，造成类是有极强的可复用性的，所以在大型项目中面向对象 几乎是标配了。</p><p>还是有一个有意思的小点要提一下，面向对象编程跟最直观的面向过程的编程有很大的区别。当然任何的编程都要考虑两个要素，一个是数据，另外一个是方法。面向对象先考虑 的是数据，后考虑方法，而面向过程编程是相反的。</p><h3 id="二、使用-Babel-编译-ES6"><a href="#二、使用-Babel-编译-ES6" class="headerlink" title="二、使用 Babel 编译 ES6"></a>二、使用 Babel 编译 ES6</h3><p>并不是所有的浏览器都支持 ES6（ES2015）的各种新语法。如果我们要把用 ES6 写的代码运行到产品环境下，还是要把 ES6 语法编译成 ES5 （也就是老语法）以获得 最佳的浏览器支持的。目前，工程实践中最常用的做法是用 Babel 来完成这个编译工作。具体怎么做呢？</p><h4 id="1-初始化一个项目"><a href="#1-初始化一个项目" class="headerlink" title="1.初始化一个项目"></a>1.初始化一个项目</h4><p>我们新建一个文件夹，就叫作 <code>oo-js-demo</code> 吧，执行：</p><pre><code>$ npm init -y
+</code></pre><h4 id="2-新建一个-html-文件"><a href="#2-新建一个-html-文件" class="headerlink" title="2.新建一个 html 文件"></a>2.新建一个 html 文件</h4><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;o-o-js&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script src=&quot;build/main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>我们要在 <code>src</code> 文件夹中新建 <code>main.js</code> , 简单写入 ES6 的一些新语法，然后使用 Babel 将其编译成 ES5 的语法，编译后的文件放在 <code>build</code> 文件夹下的 <code>main.js</code> , 这样在 html 中引入的 js 文件就可以在不支持 ES6 语法的浏览器中运行了。</p><h4 id="3-src-main-js"><a href="#3-src-main-js" class="headerlink" title="3.src/main.js"></a>3.src/main.js</h4><pre><code>class Person {
+  constructor(name) {
+    this.name = name
+  }
+}
+
+var Deepspace = new Person(&#39;Deepspace&#39;)
+console.log(Deepspace.name)
+</code></pre><h4 id="4-使用-Babel"><a href="#4-使用-Babel" class="headerlink" title="4.使用 Babel"></a>4.使用 Babel</h4><p>安装</p><pre><code>$ npm install --save-dev babel-cli
+$ npm install babel-preset-env --save-dev
+</code></pre><p>在根目录下创建一个 <code>.babelrc</code> 文件，写入以下内容：</p><pre><code>{
+  &quot;presets&quot;: [&quot;env&quot;]
+}
+</code></pre><p>然后在 <code>package.json</code> 中将 Babel 的命令写入进去：</p><pre><code>{
+  &quot;name&quot;: &quot;oo-js-demo&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;babel src -d build&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;babel-cli&quot;: &quot;^6.26.0&quot;,
+    &quot;babel-preset-env&quot;: &quot;^1.6.1&quot;
+  }
+}
+</code></pre><p>最后，执行：</p><pre><code>$ npm run build
+</code></pre><p>这样，就会在根目录创建 <code>build</code> 文件夹，并将编译好的 ES5 语法写入 <code>build/main.js</code> 中。</p><h3 id="三、Class-核心知识"><a href="#三、Class-核心知识" class="headerlink" title="三、Class 核心知识"></a>三、Class 核心知识</h3><h4 id="1-写一个-Class"><a href="#1-写一个-Class" class="headerlink" title="1.写一个 Class"></a>1.写一个 Class</h4><p>我们先用 ES5 的语法写个类</p><pre><code>function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.changeName = function(newName) {
+  this.name = newName;
+};
+</code></pre><p>ES6 语法：</p><pre><code>class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  changeName(newName) {
+    this.name = newName;
+  }
+}
+</code></pre><p>使用的时候都是一样的，都用 new 关键字</p><pre><code>var Deepspace = new Person(&#39;Deepspace&#39;);
+console.log(Deepspace.name);
+
+Deepspace.changeName(&#39;Deepspace&#39;);
+console.log(Deepspace.name);
+</code></pre><h4 id="2-理解-this-的指向"><a href="#2-理解-this-的指向" class="headerlink" title="2.理解 this 的指向"></a>2.理解 this 的指向</h4><blockquote><p>在面向对象编程条件下，类的方法内部如果含有 this，它默认指向类的实例。</p></blockquote><pre><code>class Person {
+  constructor(name) {
+    this.name = name;
+    console.log(this);
+  }
+  changeName(newName) {
+    this.name = newName;
+  }
+  sayName(){
+    console.log(this.name);
+  }
+}
+
+let deepspace = new Person(&#39;deepspace&#39;);
+let togoblog = new Person(&#39;togoblog&#39;);
+deepspace.changeName(&#39;cxin&#39;);
+deepspace.sayName();
+</code></pre><p>打印出来的结果是：</p><pre><code>Person { name: &#39;deepspace&#39; }
+Person { name: &#39;togoblog&#39; }
+cxin
+</code></pre><p>我们也可以使用“对象字面量”的形式来定义对象 :</p><pre><code>let Person = {
+  name: &#39;Peter&#39;,
+  talk: function() {
+    console.log(`My name is ${this.name}`);
+  }
+}
+
+Person.talk();
+</code></pre><h4 id="3-bind"><a href="#3-bind" class="headerlink" title="3.bind"></a>3.bind</h4><p>this 在不同的执行上下文中指向不同的对象，这样往往会造成 undefined 错误，bind 要解决的就是明确函数在执行的时候 this 的指向。</p><p>理解 bind 和 this 是使用 JS 对象的必备基础。我们看下面的例子：</p><pre><code>let Person = {
+  name: &#39;Deepspace&#39;,
+  talk: function() {
+    console.log(`My name is ${this.name}`);
+  }
+};
+
+Person.talk();
+let plzTalk = Person.talk;
+plzTalk();
+</code></pre><p>执行的结果会是这样的：</p><pre><code>My name is Deepspace
+My name is undefined
+</code></pre><p>为什么呢？其实 <code>let plzTalk = Person.talk;</code> 可以写成这样：</p><pre><code>let plzTalk = function() {
+  console.log(`My name is ${this.name}`);
+}
+</code></pre><p>那 <code>this.name</code> 自然就是 undefined 的了。</p><p><strong>使用 bind 之后</strong> :</p><pre><code>let Person = {
+  name: &#39;Deepspace&#39;,
+  talk: function() {
+    console.log(`My name is ${this.name}`);
+  }
+};
+
+Person.talk();
+let plzTalk = Person.talk;
+plzTalk.bind(Person)();
+</code></pre><p>也可以写成下面这样：</p><pre><code>let Person = {
+  name: &#39;Deepspace&#39;
+}
+
+let plzTalk = function() {
+    console.log(`My name is ${this.name}`);
+};
+
+plzTalk.bind(Person)();
+</code></pre><p>所以总结一下： bind 的作用就是把一个对象（作为 bind 的参数传入），绑定到这个函数中的 this 之上。</p><h4 id="4-bind-的例子"><a href="#4-bind-的例子" class="headerlink" title="4.bind 的例子"></a>4.bind 的例子</h4><p>再举一个 bind/this 的小例子，加深一下理解。</p><p>看下面这个例子：</p><pre><code>function talk() {
+  console.log(this.sound);
+}
+
+let Person = {
+  sound: &#39;Hi there!&#39;,
+  speak: talk
+};
+
+Person.speak();
+</code></pre><p>执行后的结果：</p><pre><code>Hi there!
+</code></pre><p>是可以正确输出 sound 的值的。其实是把 talk 这个函数拷贝到了 Person 对象中的 speak 中的 talk，这时候 this 就是指向 Person 这个对象，所以可以正确输出！</p><p>所以，这样做也是可以的：</p><pre><code>function talk() {
+  console.log(this.sound);
+}
+
+let Person = {
+  sound: &#39;Hi there!&#39;,
+};
+
+talk.bind(Person)();
+</code></pre><h4 id="5-静态方法"><a href="#5-静态方法" class="headerlink" title="5.静态方法"></a>5.静态方法</h4><p>我们在调用 class 里面的方法的时候，需要先将类实例化成对象，然后调用对象中的方法，这是很不方便的。</p><p>静态方法（ static method ）可以让我们不用实例化 class ，直接呼叫，很适合用来组织很多小功能到一个 Class 之上。</p><p>我们先看下面的错误示范：</p><pre><code>class Person {
+  constructor() {
+
+  }
+  sayHello() {
+    console.log(&quot;Hello&quot;);
+  }
+}
+
+Person.sayHello();
+</code></pre><p>会报错：</p><pre><code>TypeError: Person.sayHello is not a function
+</code></pre><p>我们只需要在方法前加上 <code>static</code> 关键字即可</p><pre><code>class Person {
+  constructor() {
+
+  }
+  static sayHello() {
+    console.log(&quot;Hello&quot;);
+  }
+}
+
+Person.sayHello();
+</code></pre><p>运行一下，会正确打印出 <code>Hello</code> , OK !</p><h3 id="四、继承"><a href="#四、继承" class="headerlink" title="四、继承"></a>四、继承</h3><h4 id="1-父类和子类"><a href="#1-父类和子类" class="headerlink" title="1.父类和子类"></a>1.父类和子类</h4><p>面向对象编程中所谓”继承”，指的就是子类会继承父类的属性和方法。ES6 语法中，继承通过 extends 关键字来实现。</p><p><strong>通过下面的代码来演示这几个效果：</strong></p><ul><li>子类中可以使用父类中的属性</li><li>子类中可以调用父类中的方法</li><li>子类中可以扩展自己的属性和方法</li></ul><pre><code>class Father {
+  constructor() {
+    this.gender = &#39;male&#39;;
+  }
+  getFamilyName() {
+    console.log(`The family name is Zhang`);
+  }
+}
+
+class Son extends Father {
+  constructor() {
+    super();
+    this.height = 160;
+  }
+  getSchoolName() {
+    console.log(&#39;NO.2 Middle School&#39;);
+  }
+}
+
+let tom = new Son;
+console.log(tom.gender);
+console.log(tom.height);
+tom.getFamilyName();
+tom.getSchoolName();
+</code></pre><h4 id="2-super-调用父类方法"><a href="#2-super-调用父类方法" class="headerlink" title="2.super 调用父类方法"></a>2.super 调用父类方法</h4><p>使用类继承的过程中，理解 super() 的作用是非常必要的。</p><p><strong>super 是什么？</strong></p><p>可以这样简单的认为： super 代表父类。主要有两个用途：</p><ul><li>使用 super() 呼叫父类的 constructor()</li><li>使用 <code>super.functionName()</code> 调用父类中的 static 方法</li></ul><p><strong>super() 的作用</strong></p><p>子类必须在 constructor 方法中调用 super 方法，否则新建实例时会报错。这是因为子类没有自己的 this 对象，而是继承父类的 this 对象，然后对其进行加工。如果不调用 super 方法，子类就得不到 this 对象。</p><p>ES6 的继承机制，实质是先创造父类的实例对象 this（所以必须先调用 super 方法），然后再用子类的构造函数修改 this。</p><pre><code>class Father {
+  constructor(familyName){
+    this.familyName = familyName;
+  }
+
+  getFamilyName(){
+    return `The family name is ${this.familyName}`;
+  }
+  static sayHello() {
+    console.log(&#39;hello&#39;);
+  }
+}
+
+class Son extends Father {
+  constructor(familyName, height) {
+    super(familyName);
+    this.height = height; // 没有上一行的 super() ，这里的 this 就不让用
+  }
+
+  getSchool(){
+    return &#39;NO.2 Middle School!&#39;;
+  }
+  static hello() {
+    super.sayHello(); // 调用父类的静态方法
+  }
+}
+
+let tom = new Son(&#39;Chen&#39;, 180);
+console.log(tom.height);
+console.log(tom.getFamilyName());
+console.log(Son.hello());
+</code></pre></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/JavaScript/" rel="tag"># JavaScript</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/create-blog-site-with-hexo/" rel="next" title="Hexo+Github 搭建博客教程"><i class="fa fa-chevron-left"></i> Hexo+Github 搭建博客教程</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/es6-proptype-chain/" rel="prev" title="JavaScript 原型链和原型继承">JavaScript 原型链和原型继承<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div></div></div><div class="toggle sidebar-toggle"><span class="toggle-line toggle-line-first"></span><span class="toggle-line toggle-line-middle"></span><span class="toggle-line toggle-line-last"></span></div><aside class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc"> 文章目录</li><li class="sidebar-nav-overview"> 站点概览</li></ul><div class="post-toc-wrap sidebar-panel"><div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是面向对象编程？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是面向对象编程？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-class-和-object"><span class="nav-number">1.1.</span> <span class="nav-text">1.class 和 object</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-为何要面向对象编程？"><span class="nav-number">1.2.</span> <span class="nav-text">2.为何要面向对象编程？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用-Babel-编译-ES6"><span class="nav-number">2.</span> <span class="nav-text">二、使用 Babel 编译 ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-初始化一个项目"><span class="nav-number">2.1.</span> <span class="nav-text">1.初始化一个项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-新建一个-html-文件"><span class="nav-number">2.2.</span> <span class="nav-text">2.新建一个 html 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-src-main-js"><span class="nav-number">2.3.</span> <span class="nav-text">3.src/main.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用-Babel"><span class="nav-number">2.4.</span> <span class="nav-text">4.使用 Babel</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Class-核心知识"><span class="nav-number">3.</span> <span class="nav-text">三、Class 核心知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-写一个-Class"><span class="nav-number">3.1.</span> <span class="nav-text">1.写一个 Class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-理解-this-的指向"><span class="nav-number">3.2.</span> <span class="nav-text">2.理解 this 的指向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-bind"><span class="nav-number">3.3.</span> <span class="nav-text">3.bind</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-bind-的例子"><span class="nav-number">3.4.</span> <span class="nav-text">4.bind 的例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-静态方法"><span class="nav-number">3.5.</span> <span class="nav-text">5.静态方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、继承"><span class="nav-number">4.</span> <span class="nav-text">四、继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-父类和子类"><span class="nav-number">4.1.</span> <span class="nav-text">1.父类和子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-super-调用父类方法"><span class="nav-number">4.2.</span> <span class="nav-text">2.super 调用父类方法</span></a></li></ol></li></ol></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" alt="Deepspace" src="/images/avatar.gif"><p class="site-author-name" itemprop="name">Deepspace</p><div class="site-description" itemprop="description">凡事预 ？立 ：废</div></div><div class="site-state-wrap motion-element"><nav class="site-state"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">45</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">12</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">36</span> <span class="site-state-item-name">标签</span></a></div></nav></div><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer class="footer"><div class="footer-inner"><div class="copyright"> &copy; <span itemprop="copyrightYear">2019</span><span class="with-love"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Deepspace</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0</div></div></footer></div><script src="/lib/anime.min.js"></script><script src="/lib/velocity/velocity.min.js"></script><script src="/lib/velocity/velocity.ui.min.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/pisces.js"></script><script src="/js/next-boot.js"></script></body></html>
